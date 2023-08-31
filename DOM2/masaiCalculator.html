@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MasaiCalculator</title>
+    <style>
+        #cont{
+            width: 30%;
+            /* border: 1px solid red; */
+            margin: auto;
+            text-align: center;
+        }
+        #cont > div{
+            /* border: 1px solid green; */
+            box-shadow: rgba(14, 30, 37, 0.12) 0px 2px 4px 0px, rgba(14, 30, 37, 0.32) 0px 2px 16px 0px;
+            border-radius: 15px;
+        }
+        #cont > h1{
+            /* border: 1px solid green; */
+        }
+        #cont > div > div{
+            display: flex;
+            justify-content: space-around;
+            /* border: 1px solid; */
+            width: 100%;
+            margin: auto;
+            padding-top: 10px;
+            padding-bottom: 10px;
+        }
+        #cont > div > div > button{
+            border: 0px solid gray;
+            box-shadow: rgba(14, 30, 37, 0.12) 0px 2px 4px 0px, rgba(14, 30, 37, 0.32) 0px 2px 16px 0px;
+            width: 80px;
+            height: 80px;
+        }
+        #cont > div > div > h1{
+            display: flex;
+            justify-content: flex-end;
+            /* border: 1px solid gray; */
+            box-shadow: rgba(14, 30, 37, 0.12) 0px 2px 4px 0px, rgba(14, 30, 37, 0.32) 0px 2px 16px 0px;
+            width: 95%;
+            height: 80px;
+            margin: auto;
+            font-size: 40px;
+            border-radius: 10px;
+        }
+        .key{
+            font-size: 30px;
+            background-color: white;
+            border-radius: 10px;
+        }
+        .operator{
+            font-size: 30px;
+            background-color: black;
+            color: white;
+            border-radius: 10px;
+        }
+        #equal{
+            font-size: 30px;
+            background-color: black;
+            color: white;
+            border-radius: 10px;
+        }
+        #clear{
+            font-size: 30px;
+            background-color: red;
+            color: white;
+            border-radius: 10px;
+        }
+        @media all and (min-width: 320px) and (max-width: 679px){
+            #cont{
+            width: 80%;
+            }
+            #cont > div > div > button{
+            width: 60px;
+            height: 60px;
+            }
+        @media all and (min-width: 680px) and (max-width: 1080px){
+            #cont{
+            width: 50%;
+            }
+            #cont > div > div > button{
+            width: 70px;
+            height: 70px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div id="cont">
+        <h1 style="color: teal;">Masai Calculator</h1>
+        <div>
+            <div>
+                <h1 id="display">0</h1>
+            </div>
+            <div>    
+                <button  class="key">1</button>
+                <button  class="key">2</button>
+                <button  class="key">3</button>
+                <button  class="operator">+</button>       
+            </div>
+
+            <div>
+                <button  class="key">4</button>
+                <button  class="key">5</button>
+                <button  class="key">6</button>
+                <button  class="operator">-</button>
+            </div>
+
+            <div>
+                <button  class="key">7</button>
+                <button  class="key">8</button>
+                <button  class="key">9</button>
+                <button  class="operator">x</button>
+            </div>
+
+            <div>
+                <button  id="clear">C</button>
+                <button  class="key">0</button>
+                <button  id="equal">=</button>
+                <button  class="operator">/</button>
+            </div>
+        </div>
+    </div>
+</body>
+<script>
+    let key = document.getElementsByClassName("key")
+    let operator = document.getElementsByClassName("operator")
+    let display = document.getElementById("display")
+    let equal = document.getElementById("equal")
+    let clear = document.getElementById("clear")
+
+    let input1 = "";
+    let input2 = "";
+    let flag = true;
+    let result;
+    let sign="";
+
+    for(let i=0; i<key.length; i++){
+        key[i].addEventListener("click",function(){
+            if(flag == true){
+                input1 += key[i].innerText
+                display.innerText = input1
+            }else if(flag == false){
+                input2 += key[i].innerText
+                display.innerText =input1 + sign + input2
+            }
+            // console.log(key[i])
+        })
+    }
+
+    for(let i=0; i<operator.length; i++){
+        operator[i].addEventListener("click",function(){
+            flag = false
+            sign = operator[i].innerText
+            display.innerText=input1 + sign
+            
+            // console.log(operator[i])
+        })
+    }
+    equal.addEventListener("click", function(){
+        switch(sign){
+            case "+":
+            result = Number(input1) + Number(input2);
+            sign = "";
+            flag=true;
+            break;
+            case "-":
+            result = Number(input1) - Number(input2);
+            sign = ""
+            flag=true;
+            break;
+
+            case "x":
+            result = Number(input1) * Number(input2);
+            sign = ""
+            flag=true;
+            break;
+            case "/":
+            result = Number(input1) / Number(input2);
+            sign = ""
+            flag=true;
+            break;
+            case "":
+            result=Number(input1)
+        }
+        display.innerText= result
+        input1=result
+        input2=""
+        
+    })
+    clear.addEventListener("click", function(){
+        flag = true;
+        input1=""
+        input2=""
+        display.innerText=0;
+    })
+</script>
+</html>
