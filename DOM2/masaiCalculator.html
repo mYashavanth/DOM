@@ -62,12 +62,14 @@
             color: white;
             border-radius: 10px;
         }
-        #clear{
+        #clear,#del{
             font-size: 30px;
             background-color: red;
             color: white;
             border-radius: 10px;
+            
         }
+    
         @media all and (min-width: 320px) and (max-width: 679px){
             #cont{
             width: 80%;
@@ -116,10 +118,16 @@
             </div>
 
             <div>
-                <button  id="clear">C</button>
+                <button class="key">.</button>
                 <button  class="key">0</button>
                 <button  id="equal">=</button>
                 <button  class="operator">/</button>
+            </div>
+            <div>
+                <button  id="clear">CA</button>
+                <button  id="del">Del</button>
+                <button style="box-shadow: none;background-color: white;"></button>
+                <button style="box-shadow: none;background-color: white;"></button>
             </div>
         </div>
     </div>
@@ -130,6 +138,7 @@
     let display = document.getElementById("display")
     let equal = document.getElementById("equal")
     let clear = document.getElementById("clear")
+    let del = document.getElementById("del")
 
     let input1 = "";
     let input2 = "";
@@ -166,6 +175,7 @@
             sign = "";
             flag=true;
             break;
+
             case "-":
             result = Number(input1) - Number(input2);
             sign = ""
@@ -177,16 +187,18 @@
             sign = ""
             flag=true;
             break;
+
             case "/":
             result = Number(input1) / Number(input2);
             sign = ""
             flag=true;
             break;
+
             case "":
             result=Number(input1)
         }
         display.innerText= result
-        input1=result
+        input1=String(result)
         input2=""
         
     })
@@ -195,6 +207,33 @@
         input1=""
         input2=""
         display.innerText=0;
+    })
+    del.addEventListener("click", function(){
+        if(flag==true && input1!=""){
+            let data = input1
+            let bag =""
+            for(let i=0; i<data.length-1; i++){
+                bag += data[i]
+            }
+            input1=bag;
+            display.innerText = input1;
+        }
+        else if(flag==false && input2!=""){
+            let data = input2
+            let bag =""
+            for(let i=0; i<data.length-1; i++){
+                bag += data[i]
+            }
+            input2=bag;
+            if(input2==""){
+                sign=""
+                flag=true;
+            }
+            display.innerText = input1 + sign + input2;
+        }
+        if(input1==0){
+            display.innerText=0;
+        }
     })
 </script>
 </html>
