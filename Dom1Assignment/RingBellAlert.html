@@ -1,0 +1,22 @@
+<!-- Add an event to image such that, whenever user clicks on that image, 
+    an alert should be displayed saying that "The website you are going to visit may harm your computer, 
+    do you still want to redirect?" -->
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Events</title>
+  </head>
+  <body>
+    <img onclick="warn()"
+      src="https://miro.medium.com/max/1400/1*mdcu3Ku9r44HMtraHUqu5g.jpeg"
+      alt=""
+    />
+  </body>
+</html>
+<script>
+    function warn(){
+        alert("The website you are going to visit may harm your computer, do you still want to redirect?")
+    }
+  // Write js here;
+</script>
