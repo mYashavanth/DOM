@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MasaiCalculator</title>
+    <style>
+        #cont{
+            width: 32%;
+            /* border: 1px solid red; */
+            margin: auto;
+            text-align: center;
+        }
+        #cont > div{
+            /* border: 1px solid green; */
+            box-shadow: rgba(14, 30, 37, 0.12) 0px 2px 4px 0px, rgba(14, 30, 37, 0.32) 0px 2px 16px 0px;
+            border-radius: 15px;
+        }
+        #cont > div > div{
+            display: flex;
+            justify-content: space-around;
+            /* border: 1px solid; */
+            width: 100%;
+            margin: auto;
+            padding-top: 10px;
+            padding-bottom: 10px;
+        }
+        #cont > div > div > button{
+            border: 0px solid gray;
+            box-shadow: rgba(14, 30, 37, 0.12) 0px 2px 4px 0px, rgba(14, 30, 37, 0.32) 0px 2px 16px 0px;
+            width: 80px;
+            height: 80px;
+        }
+        #cont > div > div > h1{
+            display: flex;
+            justify-content: flex-end;
+            /* border: 1px solid gray; */
+            box-shadow: rgba(14, 30, 37, 0.12) 0px 2px 4px 0px, rgba(14, 30, 37, 0.32) 0px 2px 16px 0px;
+            width: 95%;
+            height: 80px;
+            margin: auto;
+            font-size: 40px;
+            border-radius: 10px;
+        }
+        .key{
+            font-size: 30px;
+            background-color: white;
+            border-radius: 10px;
+        }
+        .key:hover{
+            color: darkorchid;
+            background-color: rgb(237, 233, 233);
+        }
+        .operator{
+            font-size: 30px;
+            background-color: black;
+            color: white;
+            border-radius: 10px;
+        }
+        .operator:hover{
+            color: darkred;
+        }
+        #equal{
+            font-size: 30px;
+            background-color: black;
+            color: white;
+            border-radius: 10px;
+        }
+        #equal:hover{
+            color: darkred;
+        }
+        #clear,#del{
+            font-size: 30px;
+            background-color: red;
+            color: white;
+            border-radius: 10px;
+            
+        }
+        #clear:hover,#del:hover{
+            color: black;
+        }
+    
+        @media all and (min-width: 320px) and (max-width: 520px){
+            #cont{
+            width: 78%;
+            }
+            #cont > div > div > button{
+            width: 60px;
+            height: 60px;
+            }
+        }
+        @media all and (min-width: 521px) and (max-width: 760px){
+            #cont{
+            width: 68%;
+            }
+            #cont > div > div > button{
+            width: 70px;
+            height: 70px;
+            }
+        }
+        @media all and (min-width: 761px) and (max-width: 1080px){
+            #cont{
+            width: 47%;
+            }
+            #cont > div > div > button{
+            width: 70px;
+            height: 70px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div id="cont">
+        <h1 style="color: teal;">Masai Calculator</h1>
+        <div>
+            <div>
+                <h1 id="display">0</h1>
+            </div>
+            <div>    
+                <button  class="key">1</button>
+                <button  class="key">2</button>
+                <button  class="key">3</button>
+                <button  class="operator">+</button>       
+            </div>
+
+            <div>
+                <button  class="key">4</button>
+                <button  class="key">5</button>
+                <button  class="key">6</button>
+                <button  class="operator">-</button>
+            </div>
+
+            <div>
+                <button  class="key">7</button>
+                <button  class="key">8</button>
+                <button  class="key">9</button>
+                <button  class="operator">*</button>
+            </div>
+
+            <div>
+                <button class="key">(</button>
+                <button  class="key">0</button>
+                <button class="key">)</button>
+                <button  class="operator">/</button>
+            </div>
+            <div>
+                <button  id="clear">CA</button>
+                <button class="key">.</button>
+                <button  id="equal">=</button>
+                <button  id="del">Del</button>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
+<script>
+    let key = document.getElementsByTagName("button")
+    let display = document.getElementById("display")
+    let data = "";
+    let ans="";
+    for(let i=0; i<key.length; i++){       
+        key[i].addEventListener("click",function(){
+            if(key[i].innerText == "CA"){
+                data = ""
+                display.innerText = "0";
+            }
+            else if(key[i].innerText == "Del"){
+                if(ans!=""){
+                    let bag = ""
+                    for(let j=0; j<ans.length-1; j++){
+                        bag += ans[j];
+                    }
+                    ans = bag;
+                    display.innerText = ans;
+                }
+                let bag = ""
+                for(let j=0; j<data.length-1; j++){
+                    bag += data[j];
+                }
+                data = bag;
+                display.innerText = data;
+            }
+            else if(key[i].innerText == "="){
+                if(data != ""){
+                    ans = eval(data)+""; 
+                    display.innerText = ans;
+                }else{
+                    display.innerText= ans;
+                }
+                data = ans;
+            }
+            else if(key[i].innerText == "+" || key[i].innerText == "-" || key[i].innerText == "*" || key[i].innerText == "/"){
+                if(ans=="" || ans==undefined||ans==data){
+                    data = data + key[i].innerText;
+                }else{
+                    data = ans + data + key[i].innerText;
+                }
+                display.innerText = data;
+                ans = ""
+            }
+            else{
+                data += key[i].innerText
+                display.innerText = data;    
+            }
+        })
+    }
+</script>
