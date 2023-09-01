@@ -132,9 +132,9 @@
             </div>
             <div>
                 <button  id="clear">CA</button>
+                <button style="box-shadow: none;background-color: white;"></button>
+                <button style="box-shadow: none;background-color: white;"></button>
                 <button  id="del">Del</button>
-                <button style="box-shadow: none;background-color: white;"></button>
-                <button style="box-shadow: none;background-color: white;"></button>
             </div>
         </div>
     </div>
@@ -180,26 +180,18 @@
         switch(sign){
             case "+":
             result = Number(input1) + Number(input2);
-            sign = "";
-            flag=true;
             break;
 
             case "-":
             result = Number(input1) - Number(input2);
-            sign = ""
-            flag=true;
             break;
 
             case "x":
             result = Number(input1) * Number(input2);
-            sign = ""
-            flag=true;
             break;
 
             case "/":
             result = Number(input1) / Number(input2);
-            sign = ""
-            flag=true;
             break;
 
             case "":
@@ -208,6 +200,8 @@
         display.innerText= result
         input1=String(result)
         input2=""
+        sign = ""
+        flag=true;
         
     })
     clear.addEventListener("click", function(){
