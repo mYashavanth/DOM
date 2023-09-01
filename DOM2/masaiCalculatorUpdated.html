@@ -158,6 +158,7 @@
     let display = document.getElementById("display")
     let data = "";
     let ans="";
+    // let a = ans.toFixed(10)
     for(let i=0; i<key.length; i++){       
         key[i].addEventListener("click",function(){
             if(key[i].innerText == "CA"){
@@ -171,7 +172,7 @@
                         bag += ans[j];
                     }
                     ans = bag;
-                    display.innerText = ans;
+                    display.innerText = Number(ans).toFixed(10);
                 }
                 let bag = ""
                 for(let j=0; j<data.length-1; j++){
@@ -183,9 +184,9 @@
             else if(key[i].innerText == "="){
                 if(data != ""){
                     ans = eval(data)+""; 
-                    display.innerText = ans;
+                    display.innerText = Number(ans).toFixed(10);
                 }else{
-                    display.innerText= ans;
+                    display.innerText= Number(ans).toFixed(10);
                 }
                 data = ans;
             }
