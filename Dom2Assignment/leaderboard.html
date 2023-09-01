@@ -4,8 +4,141 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <style>
+        #parent{
+            display: flex;
+            flex-direction: column;
+            margin: auto;
+            text-align: center;
+
+            /* border: 1px solid green; */
+            width: 40%;
+        }
+        #cont{
+            display: flex;
+            justify-content: space-around;
+            text-align: center;
+            /* border: 1px solid red; */
+            width: 100%;
+        }
+        #min{
+            background-color: red;
+            border: 2px solid;
+            text-align: center;
+            width: 100px;
+            padding: 20px;
+            margin-bottom: -15px;
+        }
+        #max{
+            background-color: green;
+            border: 2px solid;
+            text-align: center;
+            width: 100px;
+            padding: 20px;
+            margin-bottom: -15px;
+        }
+        #score{
+            background-color: gray;
+            border: 2px solid;
+            text-align: center;
+            width: 250px;
+            padding: 20px;
+            margin-top: -15px;
+        }
+        #scoreCont{
+            margin: auto;
+        }
+        #keyCont{
+            display: flex;
+            flex-direction: column;
+        }
+        #keyCont>div{
+            padding-bottom: 20px;
+        }
+        #keyCont>div>button{
+            margin-left: 8px;
+            margin-right: 8px;
+            width: 80px;
+            height: 80px;
+            font-weight: bold;
+        }
+        #enter{
+            background-color: black;
+            color: white;
+            border: 2px solid;
+            text-align: center;
+            width: 250px;
+            padding: 20px;
+            margin-top: -10px;
+        }
+        #enterCont{
+            margin: auto;
+        }
+        
+        
+    </style>
 </head>
 <body>
-    
+    <div id="parent">
+        <div id="cont">
+            <div>
+                <h1 id="min">43</h1>
+                <h3>MIN</h3>
+            </div>
+            <div>
+                <h1 id="max">2019</h1>
+                <h3>MAX</h3>
+            </div>
+        </div>
+        <div id="scoreCont">
+            <h3>SCORE</h3>
+            <h1 id="score"></h1>
+        </div>
+        <div id="keyCont">
+            <div>
+                <button class="key" style="background-color: #668100;">1</button>
+                <button class="key" style="background-color: #FF6600;">2</button>
+                <button class="key" style="background-color: #668100;">3</button>
+            </div>
+            <div>
+                <button class="key" style="background-color: #FF6600;">4</button>
+                <button class="key" style="background-color: #FF6600;">5</button>
+                <button class="key" style="background-color: #FF6600;">6</button>
+            </div>
+            <div>
+                <button class="key" style="background-color: #668100;">7</button>
+                <button class="key" style="background-color: #FF6600;">8</button>
+                <button class="key" style="background-color: #668100;">9</button>
+            </div>
+            <div>
+                <button class="key" style="background-color: #810065;">0</button>
+            </div>
+        </div>
+        <div id="enterCont">
+            <button id="enter">ENTER</button>
+        </div>
+    </div>
 </body>
 </html>
+<script>
+    let min = document.getElementById("min")
+    let max = document.getElementById("max")
+    let score = document.getElementById("score")
+    let key = document.getElementsByClassName("key")
+    let enter = document.getElementById("enter")
+
+    for(let i=0; i<key.length; i++){
+        key[i].addEventListener("click",function(){
+            score.innerText += key[i].innerText
+        })
+    }
+    enter.addEventListener("click",function(){
+        if(Number(score.innerText) < Number(min.innerText)){
+            min.innerText = score.innerText
+        }
+        else if(Number(score.innerText) > Number(max.innerText)){
+            max.innerText = score.innerText
+        }
+        score.innerText = ""
+    })
+</script>
