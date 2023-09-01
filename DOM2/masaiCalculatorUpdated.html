@@ -158,7 +158,6 @@
     let display = document.getElementById("display")
     let data = "";
     let ans="";
-    // let a = ans.toFixed(10)
     for(let i=0; i<key.length; i++){       
         key[i].addEventListener("click",function(){
             if(key[i].innerText == "CA"){
@@ -183,19 +182,25 @@
             }
             else if(key[i].innerText == "="){
                 if(data != ""){
-                    ans = eval(data)+""; 
-                    display.innerText = Number(ans).toFixed(10);
+                    ans = eval(data)+"";
+                    if(ans.length > 10){
+                        display.innerText = Number(ans).toFixed(10);
+                        ans = Number(ans).toFixed(10)
+                    }else{
+                        display.innerText = ans;
+                    }
                 }else{
-                    display.innerText= Number(ans).toFixed(10);
+                    if(ans.length > 10){
+                        display.innerText = Number(ans).toFixed(10);
+                        ans = Number(ans).toFixed(10)
+                    }else{
+                        display.innerText = ans;
+                    }
                 }
-                data = ans;
+                data = ans
             }
             else if(key[i].innerText == "+" || key[i].innerText == "-" || key[i].innerText == "*" || key[i].innerText == "/"){
-                if(ans=="" || ans==undefined||ans==data){
-                    data = data + key[i].innerText;
-                }else{
-                    data = ans + data + key[i].innerText;
-                }
+                data =  data + key[i].innerText;
                 display.innerText = data;
                 ans = ""
             }
