@@ -183,14 +183,14 @@
             else if(key[i].innerText == "="){
                 if(data != ""){
                     ans = eval(data)+"";
-                    if(ans.length > 10){
+                    if(ans.length > 16){
                         display.innerText = Number(ans).toFixed(10);
                         ans = Number(ans).toFixed(10)
                     }else{
                         display.innerText = ans;
                     }
                 }else{
-                    if(ans.length > 10){
+                    if(ans.length > 16){
                         display.innerText = Number(ans).toFixed(10);
                         ans = Number(ans).toFixed(10)
                     }else{
