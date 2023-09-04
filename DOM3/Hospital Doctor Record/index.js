@@ -5,6 +5,7 @@ let dSpe = document.querySelector("#dept");
 let dExp = document.querySelector("#exp");
 let dEmail = document.querySelector("#email");
 let dMob = document.querySelector("#mbl");
+let search = document.querySelector("#search");
 
 document.querySelector("form").addEventListener("submit",myForm);
 
@@ -20,11 +21,12 @@ function myForm(ele){
         dMob: dMob.value
     }
     arrData.push(data);
-    mapping();
+    // console.log(search)
+    mapping(arrData);
 }
-function mapping(){
+function mapping(Data){
     document.querySelector("tbody").innerHTML = "";
-    arrData.map((ele,index)=>{
+    Data.map((ele,index)=>{
         let tr = document.createElement("tr");
         let td1 = document.createElement("td");
         let td2 = document.createElement("td");
@@ -40,8 +42,11 @@ function mapping(){
         btn.innerText="Delete"
 
         btn.addEventListener("click",function(){
-            arrData.splice(index,1)
-            mapping()
+            Data.splice(index,1)
+            mapping(Data)
+            if(Data==arr){
+                arrData = arr.concat(arr1);
+            }
         })
 
 
@@ -66,4 +71,20 @@ function mapping(){
 
     })
 }
+let arr;
+let arr1;
+document.querySelector("#searchBut").addEventListener("click",function(){
+    arr = arrData.filter((ele,index)=>{
+        if(ele.dSpe == search.value){
+            return ele;
+        }
+    })
+    arr1 = arrData.filter((ele,index)=>{
+        if(ele.dSpe != search.value){
+            return ele;
+        }
+    })
+
+    mapping(arr);
+})
 

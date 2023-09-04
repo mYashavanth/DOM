@@ -1,7 +1,11 @@
 /* Fill CSS here */
-div {
+#formCont {
   display: flex;
   justify-content: space-around;
+}
+#filterCont {
+  display: flex;
+  justify-content: center;
 }
 form {
   margin: 0 auto;
@@ -99,4 +103,16 @@ h1 {
   color: white;
   border: 0px;
   border-radius: 10px;
+}
+#search{
+  width: 25%;
+}
+#searchBut{
+  width: 15%;
+  height: 54px;
+  background-color: #0468aa;
+  color: white;
+  font-size: large;
+  border: 0px;
+  border-radius: 15px;
 }
