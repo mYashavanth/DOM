@@ -20,7 +20,15 @@ function myForm(ele){
         eEmail: eEmail.value,
         eMob:eMob.value
     }
-    arrData.push(data);
+    
+    let exist = arrData.findIndex(ele=>ele.eId==data.eId) > -1;
+    if(exist==false){
+        arrData.push(data);
+    }else{
+        alert("This data already exists")
+    }
+
+    // console.log(exist);    
     mapping(arrData);
 }
 
@@ -70,6 +78,7 @@ function mapping(Data){
             td7.innerText="Senior";
         } 
     
+    
         tr.append(td1,td2,td3,td4,td5,td6,td7,td8);
         document.querySelector("tbody").append(tr);
     })
@@ -77,17 +86,20 @@ function mapping(Data){
 let arr= [];
 let arr1= [];
 document.querySelector("#filterBut").addEventListener("click",function(){
-    arr = arrData.filter((ele,index)=>{
-        if(ele.eDep==filter.value){
-            return ele;
-        }
-    })
-    arr1 = arrData.filter((ele,index)=>{
-        if(ele.eDep!=filter.value){
-            return ele;
-        }
-    })
-    arrData = arr.concat(arr1);
-    mapping(arr);
+    if(filter.value==""){
+        mapping(arrData);
+    }else{
+        arr = arrData.filter((ele,index)=>{
+            if(ele.eDep==filter.value){
+                return ele;
+            }
+        })
+        arr1 = arrData.filter((ele,index)=>{
+            if(ele.eDep!=filter.value){
+                return ele;
+            }
+        })
+        mapping(arr);
+    }
 })
 
