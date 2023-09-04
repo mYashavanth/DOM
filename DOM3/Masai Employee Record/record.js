@@ -24,9 +24,9 @@ function myForm(ele){
     mapping(arrData);
 }
 
-function mapping(arrData){
+function mapping(Data){
     document.querySelector("tbody").innerHTML = "";
-    arrData.map((ele,index)=>{
+    Data.map((ele,index)=>{
         let tr = document.createElement("tr");
         let td1 = document.createElement("td");
         let td2 = document.createElement("td");
@@ -48,9 +48,11 @@ function mapping(arrData){
         btn.style.height = "30px"
         
         btn.addEventListener("click",function(){
-            arrData.splice(index,1);
-            mapping(arrData)
-            console.log(ele,index);
+            Data.splice(index,1);
+            mapping(Data)
+            if(Data==arr){
+                arrData = arr.concat(arr1);
+            }
         })
     
         td1.innerText = ele.eName;
@@ -70,26 +72,22 @@ function mapping(arrData){
     
         tr.append(td1,td2,td3,td4,td5,td6,td7,td8);
         document.querySelector("tbody").append(tr);
-        // console.log(ele,index)
     })
 }
+let arr= [];
+let arr1= [];
 document.querySelector("#filterBut").addEventListener("click",function(){
-    let arr = arrData.filter((ele,index)=>{
+    arr = arrData.filter((ele,index)=>{
         if(ele.eDep==filter.value){
-            // console.log(ele,index);
             return ele;
         }
-        // console.log(ele,index);
     })
-    // mapping(arrData);
+    arr1 = arrData.filter((ele,index)=>{
+        if(ele.eDep!=filter.value){
+            return ele;
+        }
+    })
+    arrData = arr.concat(arr1);
     mapping(arr);
 })
-
-
-
-
-
-
-
-
 
