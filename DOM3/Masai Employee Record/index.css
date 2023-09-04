@@ -1,7 +1,11 @@
 /* Fill CSS here */
-div {
+#formCont {
     display: flex;
     justify-content: space-around;
+  }
+#filterCont {
+    display: flex;
+    justify-content: center;
   }
   form {
     margin: 0 auto;
@@ -90,5 +94,18 @@ div {
     font-family: monospace;
     color: #2b619e;
     text-decoration: underline;
+  }
+
+  #filter{
+    width: 25%;
+  }
+  #filterBut{
+    width: 15%;
+    height: 54px;
+    background-color: #0468aa;
+    color: white;
+    font-size: large;
+    border: 0px;
+    border-radius: 15px;
   }
   

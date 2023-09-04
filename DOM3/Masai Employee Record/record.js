@@ -5,6 +5,7 @@ let eDep = document.querySelector("#department");
 let eExp = document.querySelector("#exp");
 let eEmail = document.querySelector("#email");
 let eMob = document.querySelector("#mbl");
+let filter = document.querySelector("#filter");
 
 document.querySelector("form").addEventListener("submit",myForm);
 let arrData = [];
@@ -20,10 +21,10 @@ function myForm(ele){
         eMob:eMob.value
     }
     arrData.push(data);
-    mapping()
+    mapping(arrData);
 }
 
-function mapping(){
+function mapping(arrData){
     document.querySelector("tbody").innerHTML = "";
     arrData.map((ele,index)=>{
         let tr = document.createElement("tr");
@@ -47,7 +48,9 @@ function mapping(){
         btn.style.height = "30px"
         
         btn.addEventListener("click",function(){
-              del(ele,index);
+            arrData.splice(index,1);
+            mapping(arrData)
+            console.log(ele,index);
         })
     
         td1.innerText = ele.eName;
@@ -65,19 +68,22 @@ function mapping(){
             td7.innerText="Senior";
         } 
     
-    
         tr.append(td1,td2,td3,td4,td5,td6,td7,td8);
         document.querySelector("tbody").append(tr);
-        
-        
-        function del(ele,index){
-            arrData.splice(index,1);
-            mapping()
-
-            // console.log(arrData,index,ele)
-        }
+        // console.log(ele,index)
     })
 }
+document.querySelector("#filterBut").addEventListener("click",function(){
+    let arr = arrData.filter((ele,index)=>{
+        if(ele.eDep==filter.value){
+            // console.log(ele,index);
+            return ele;
+        }
+        // console.log(ele,index);
+    })
+    // mapping(arrData);
+    mapping(arr);
+})
 
 
 
