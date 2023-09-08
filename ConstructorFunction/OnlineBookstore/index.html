@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Online BookStore</h1>
+</body>
+</html>
+<script>
+    function Authors(name,dob,nation){
+        this.name = name;
+        this.birthYear = dob;
+        this.nationality = nation;
+    }
+    function Books(title,genre,price,author){
+        this.title = title;
+        this.genre = genre;
+        this.price = price;
+        this.author = author;
+        this.getBookInfo = function(){
+            console.log(this.title, this.author.name, this.genre, this.price)
+        }
+    }
+
+    let authorsData1 = new Authors("yash","16-05-1978","India")
+    let authorsData2 = new Authors("kanak","09-02-1980","India")
+
+    let booksData1 = new Books("kannada","Novel",100,authorsData1);
+    let booksData2 = new Books("English","Comedy",50,authorsData2);
+
+    booksData2.getBookInfo();
+
+    let arr = [booksData1,booksData2]
+    arr.map(ele=>{
+        console.log(`Book Details:
+        Book Name: ${ele.title}
+        Book Genre: ${ele.genre}
+        Book Price: ${ele.price}Rs
+    Author Details:
+        Name: ${ele.author.name}
+        DOB: ${ele.author.birthYear}
+        Nationality: ${ele.author.nationality}`)
+    })
+</script>

@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Bank Account Management</h1>
+</body>
+</html>
+<script>
+    function BankAccount(accountNumber,name,balance,type){
+        this.accountNumber = accountNumber;
+        this.name = name;
+        this.balance = balance;
+        this.type = type;
+        
+        this.deposit = function(amount){
+            if(amount==undefined){
+                this.balance = balance;
+            }else{
+                this.balance += amount;
+                console.log(amount+ "INR is credited to your account")
+            }
+        }
+        this.withdraw = function(amount){
+            if(amount==undefined){
+                this.balance = balance;
+            }else if(this.balance>=amount){
+                this.balance -= amount;
+                console.log(amount+ "INR is debited from your account")
+            }else{
+                console.log(`Insufficiant balance`)
+            }
+        }
+        this.checkBalnce = function(){
+            console.log("Your account's balance is " + this.balance)
+        }
+        this.isActive = function(){
+            console.log("this account is "+this.type)
+        }
+    }
+
+    let arr = [];
+
+    function addDataToArr(accountNumber,name,balance,type){
+        arr.push(new BankAccount(accountNumber,name,balance,type))
+    }
+    console.log(arr)
+    
+    addDataToArr(1000001,"Iron Man",10000,"active");
+    addDataToArr(1000002,"Thor",15000,"active");
+    addDataToArr(1000003,"Loki",5000,"inactive");
+    addDataToArr(1000004,"Captain America",20000,"active");
+    addDataToArr(1000005,"Spider Man",12000,"inactive");
+    addDataToArr(1000006,"Black Panther",17000,"active");
+    addDataToArr(1000007,"Hulk",9000,"inactive");
+    addDataToArr(1000008,"Doctor Strange",30000,"active");
+    addDataToArr(1000009,"Black Widow",16000,"active");
+    addDataToArr(1000010,"Scarlet Witch",22000,"inactive");
+    
+    function deposit(index,depositamount){
+        arr[index].deposit(depositamount)
+        arr[index].checkBalnce()
+        arr[index].isActive()
+    }
+    deposit(1,200);
+
+    function withdraw(index,withdrawamount){
+        arr[index].withdraw(withdrawamount)
+        arr[index].checkBalnce()
+        arr[index].isActive()
+    }
+    withdraw(arr.length-1,3000);
+
+    let totalBalance = 0;
+    let totalBalanceOfActiveAcc = 0;
+    arr.map((ele,index)=>{
+        totalBalance += ele.balance
+        if(ele.type=="active"){
+            getTotalBalance.call(ele)
+        }
+    })
+    function getTotalBalance(){
+        totalBalanceOfActiveAcc += this.balance
+    }
+    console.log(totalBalanceOfActiveAcc + " INR Is The Total Balance of Active account")
+    console.log(totalBalance - totalBalanceOfActiveAcc + " INR Is The Total Balance of Inactive account")
+
+</script>
