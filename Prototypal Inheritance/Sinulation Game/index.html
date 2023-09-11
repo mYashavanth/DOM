@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Simulation Game</h1>
+</body>
+</html>
+<script>
+    // Cunstructor for Vehicle
+    function Vehicle(brand,model,speed,fuelType){
+        this.brand=brand;
+        this.model=model;
+        this.speed=speed;
+        this.fuelType=fuelType;
+    }
+    Vehicle.prototype.accelerate = function(a){
+        this.speed += a;
+        console.log("Speed Increased to "+ this.speed)
+    }
+    
+    Vehicle.prototype.brake = function(b){
+        this.speed -= b;
+        console.log("Speed redused to "+ this.speed)
+    }
+    
+    Vehicle.prototype.refuel = function(){
+        console.log("Vehicle is refueling.")
+    }
+    
+    
+    // Cunstructor for Car
+    function Car(brand,model,speed,fuelType,numberOfWheels ){
+        Vehicle.call(this,brand,model,speed,fuelType)
+        this.numberOfWheels=numberOfWheels;
+    }
+    
+    Car.prototype.honk = function(){
+        console.log("HONK HONK!!")
+    }
+    
+    
+    Object.setPrototypeOf(Car.prototype, Vehicle.prototype)
+    
+    
+    // Cunstructor for Plane
+    function Airplane(brand,model,speed,fuelType,numberOfEngines ){
+        Vehicle.call(this,brand,model,speed,fuelType)
+        this.numberOfEngines =numberOfEngines;
+    }
+
+
+    Airplane.prototype.hasLandingGear = function(){
+        console.log("The Landing gear is activated")
+    }
+
+    Airplane.prototype.takeOff = function(){
+        console.log("Airplane is taking off")
+    }
+
+    Object.setPrototypeOf(Airplane.prototype, Vehicle.prototype)
+
+    let vehicle = new Vehicle("TATA","XYZ",200,"petrol")
+
+    let car = new Car("TATA","XYZ",200,"petrol",4)
+    console.log(vehicle);
+    console.log(car);
+    car.brake(5);
+    car.accelerate(10);
+    
+    let plane = new Airplane("TATA","XYZ",800,"petrol",3)
+    console.log(plane);
+    console.log(plane.speed);
+    plane.refuel();
+
+</script>

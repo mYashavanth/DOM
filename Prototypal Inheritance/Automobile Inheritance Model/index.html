@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Automobile Inheritance Model</h1>
+</body>
+</html>
+<script>
+
+    function FourWheeler(model,color,type,price){
+        this.model=model;
+        this.color=color;
+        this.type=type;
+        this.price=price;
+    }
+    FourWheeler.prototype.break = function(){
+        console.log("Break is working properly")
+    }
+    
+    FourWheeler.prototype.acceleration = function(){
+        console.log("Speed is rising")
+    }
+
+    FourWheeler.prototype.horn = function(){
+        console.log("Horn is working")
+    }
+
+    let car1 = new FourWheeler('A1','neon','petrol',220000)
+    let car2 = Object.create(car1)
+    
+    car1.acceleration()
+    car2.break()
+    console.log(car1)
+</script>
