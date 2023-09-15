@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div>
+        <input id="hour" type="number" placeholder="Hour">
+        <input id="min" type="number" placeholder="Min">
+        <input id="sec" type="number" placeholder="Sec">
+    </div>
+    <div>
+        <button id="start">Start</button>
+        <button id="pause">Pause</button>
+        <button id="reset">Reset</button>
+    </div>
+
+    <h1>Timer: 0</h1>
+</body>
+</html>
+<script>
+    let hour = document.querySelector("#hour")
+    let min = document.querySelector("#min")
+    let sec = document.querySelector("#sec")
+    let start = document.querySelector("#start")
+    let pause = document.querySelector("#pause")
+    let reset = document.querySelector("#reset")
+
+    let time=0;
+    let ms =0;
+    let s =0;
+    let mi =0;
+    let hr =0;
+    let delay;
+    let previousTime=0;
+
+    function toMiliSec(hour,min,sec){
+        time=(hour*60*60*100)+(min*60*100)+(sec*100)
+        previousTime=(hour*60*60*100)+(min*60*100)+(sec*100);
+        // console.log(time)
+    }
+
+    function normalTime(miliSec){
+        ms = miliSec%100;
+
+        let a = Math.trunc(miliSec/100)
+        s = a%60
+
+        let b = Math.trunc(miliSec/100/60)
+        mi = b%60
+        
+        let c = Math.trunc(miliSec/100/60/60)
+        hr = c%60
+        // console.log(hr,mi,s,ms)
+        if(mi==0 && hr==0){
+            document.querySelector("h1").innerText = `Timer: ${s}:${ms}`
+        }else if(mi>0 && hr==0){
+            document.querySelector("h1").innerText = `Timer: ${mi}:${s}:${ms}`
+        }else if(hr>0){
+            document.querySelector("h1").innerText = `Timer: ${hr}:${mi}:${s}:${ms}`
+        }
+    }
+
+    function timer(){
+        if(time>0){
+            time = time-1;
+            console.log(time)
+            normalTime(time)
+        }
+    }
+
+    function stop(){
+        clearInterval(delay);
+        delay = null;
+    }
+
+    start.addEventListener("click",function(){
+        if(!delay && (hour.value>0 || min.value>0 || sec.value>0)){
+            toMiliSec(hour.value,min.value,sec.value);
+            delay = setInterval(timer,10)
+            hour.value =null;
+            min.value =null;
+            sec.value =null;
+            pause.innerText = "Pause"
+        }
+    })
+    pause.addEventListener("click",function(){
+        if(!delay){
+            delay = setInterval(timer,10)
+            pause.innerText = "Pause"
+        }else{
+            stop()
+            pause.innerText = "Play"
+        }
+    })
+    reset.addEventListener("click",function(){
+        stop()
+        time=0;
+        delay=null;
+        document.querySelector("h1").innerText = `Timer: 0`
+    })
+
+</script>

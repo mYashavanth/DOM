@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>StopWatch</title>
+</head>
+<body>
+    <h1>0</h1>
+    <button id="start">Start</button>
+    <button id="pause">Pause</button>
+    <button id="reset">Reset</button>
+</body>
+</html>
+<script>
+    let Time = 0;
+    let ms=0;
+    let s = 0;
+    let min = 0;
+    let hour = 0;
+    let paused = true;
+    let start = true;
+    document.querySelector("#start").addEventListener("click",function(){        
+        if(start == true){
+            let delay = setInterval(time,10);
+            start = false
+        }
+        if(paused==false){
+            paused=true;
+            document.querySelector("#pause").innerText = "Pause"
+        }
+        
+        function stop(){
+            clearInterval(delay);
+        }
+    })
+
+    document.querySelector("#pause").addEventListener("click",function(){
+        if(paused==true){
+            paused=false;
+            document.querySelector("#pause").innerText = "Play"
+            console.log(Time,ms,s,min,hour)
+        }else if(paused==false){
+            paused=true;
+            document.querySelector("#pause").innerText = "Pause"
+        }
+        stop();
+    })
+    
+    document.querySelector("#reset").addEventListener("click",function(){
+        Time = 0;
+        ms=0;
+        s = 0;
+        min = 0;
+        hour = 0;
+        document.querySelector("h1").innerText = `${ms}`
+        paused = false;
+
+    })
+
+    function time(){
+        if(paused==true){
+            Time++
+            ms = Time%100;
+
+            let a = Math.trunc(Time/100)
+            s = a%60
+
+            let b = Math.trunc(Time/100/60)
+            min = b%60
+            
+            let c = Math.trunc(Time/100/60/60)
+            hour = c%60
+
+            if(min==0 && hour==0){
+                document.querySelector("h1").innerText = `${s}:${ms}`
+            }else if(min>0 && hour==0){
+                document.querySelector("h1").innerText = `${min}:${s}:${ms}`
+            }else if(hour>0){
+                document.querySelector("h1").innerText = `${hour}:${min}:${s}:${ms}`
+            }
+        }
+    }
+</script>
