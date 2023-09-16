@@ -5,23 +5,40 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <style>
+        #cont{
+            width: 30%;
+            margin: auto;
+            background-color: teal;
+            padding: 15px;
+            border-radius: 25px;
+            box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+        }
         input{
-            width: 60%;
+            width: 40%;
             display: block;
             margin-bottom: 5px;
+            border-radius: 10px;
+            border: 0px;
+            text-align: center;
+            background-color: antiquewhite;
         }
         #input{
             display: flex;
             flex-direction: column;
             align-items: center;
-            width: 30%;
+            width: 90%;
             /* border: 1px solid red; */
             margin: auto;
+        }
+        button{
+            width: 30%;
+            height: 25px;
+            box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
         }
         #button{
             display: flex;
             justify-content: space-around;
-            width: 20%;
+            width: 80%;
             /* border: 1px solid red; */
             margin: auto;
         }
@@ -36,14 +53,14 @@
             border: 0px;
             border-radius: 7px;
             background-color: red;
-            color: blue;
+            color: black;
             letter-spacing: 1.5px;
         }
         #reset{
             border: 0px;
             border-radius: 7px;
             background-color: gray;
-            color: white;
+            color: black;
             letter-spacing: 1.5px;
         }
         h1{
@@ -58,17 +75,19 @@
     </style>
 </head>
 <body>
-    <div id="input">
-        <input id="hour" type="number" placeholder="Hour">
-        <input id="min" type="number" placeholder="Min">
-        <input id="sec" type="number" placeholder="Sec">
-    </div>
-    <h2>Timer: </h2>
-    <h1>0</h1>
-    <div id="button">
-        <button id="start">Start</button>
-        <button id="pause">Pause</button>
-        <button id="reset">Reset</button>
+    <div id="cont">
+        <div id="input">
+            <input id="hour" type="" placeholder="Hour">
+            <input id="min" type="" placeholder="Min">
+            <input id="sec" type="" placeholder="Sec">
+        </div>
+        <h2>Timer: </h2>
+        <h1>00:00</h1>
+        <div id="button">
+            <button id="start">Start</button>
+            <button id="pause">Pause</button>
+            <button id="reset">Reset</button>
+        </div>
     </div>
 
 </body>
@@ -102,6 +121,11 @@
         let c = Math.trunc(miliSec/100/60/60)
         let hr = c%60
         // console.log(hr,mi,s,ms)
+        ms<10 ? ms=("0"+ms):ms;
+        s<10 ? s=("0"+s):s;
+        mi<10 ? mi=("0"+mi):mi;
+        hr<10 ? hr=("0"+hr):hr;
+
         if(mi==0 && hr==0){
             document.querySelector("h1").innerText = `${s}:${ms}`
         }else if(mi>0 && hr==0){
@@ -130,7 +154,7 @@
             delay = setInterval(timer,10)
             pause.innerText = "Pause"
             document.querySelector("#pause").style.backgroundColor = "red"
-            document.querySelector("#pause").style.color = "blue"
+            document.querySelector("#pause").style.color = "black"
             flag = true;
         } else{
             alert(`Enter the data in Hour, Min or Sec to start the timer`)
@@ -142,7 +166,7 @@
                 delay = setInterval(timer,10)
                 pause.innerText = "Pause"
                 document.querySelector("#pause").style.backgroundColor = "red"
-                document.querySelector("#pause").style.color = "blue"
+                document.querySelector("#pause").style.color = "black"
             }else{
                 stop()
                 pause.innerText = "Play"
@@ -152,13 +176,15 @@
         }
     })
     reset.addEventListener("click",function(){
-        stop()
-        time=0;
-        flag=false;
-        pause.innerText = "Pause"
-        document.querySelector("#pause").style.backgroundColor = "red"
-        document.querySelector("#pause").style.color = "blue"
-        document.querySelector("h1").innerText = `0`
+        if(flag){
+            stop()
+            time=0;
+            flag=false;
+            pause.innerText = "Pause"
+            document.querySelector("#pause").style.backgroundColor = "red"
+            document.querySelector("#pause").style.color = "black"
+            document.querySelector("h1").innerText = `00:00`
+        }
     })
 
 </script>
