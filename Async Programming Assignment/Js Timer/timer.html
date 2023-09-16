@@ -29,30 +29,25 @@
     let reset = document.querySelector("#reset")
 
     let time=0;
-    let ms =0;
-    let s =0;
-    let mi =0;
-    let hr =0;
     let delay;
-    let previousTime=0;
+    let flag;
 
     function toMiliSec(hour,min,sec){
         time=(hour*60*60*100)+(min*60*100)+(sec*100)
-        previousTime=(hour*60*60*100)+(min*60*100)+(sec*100);
         // console.log(time)
     }
 
     function normalTime(miliSec){
-        ms = miliSec%100;
+        let ms = miliSec%100;
 
         let a = Math.trunc(miliSec/100)
         s = a%60
 
         let b = Math.trunc(miliSec/100/60)
-        mi = b%60
+        let mi = b%60
         
         let c = Math.trunc(miliSec/100/60/60)
-        hr = c%60
+        let hr = c%60
         // console.log(hr,mi,s,ms)
         if(mi==0 && hr==0){
             document.querySelector("h1").innerText = `Timer: ${s}:${ms}`
@@ -66,8 +61,8 @@
     function timer(){
         if(time>0){
             time = time-1;
-            console.log(time)
             normalTime(time)
+            // console.log(time)
         }
     }
 
@@ -80,25 +75,25 @@
         if(!delay && (hour.value>0 || min.value>0 || sec.value>0)){
             toMiliSec(hour.value,min.value,sec.value);
             delay = setInterval(timer,10)
-            hour.value =null;
-            min.value =null;
-            sec.value =null;
             pause.innerText = "Pause"
-        }
+            flag = true;
+        } 
     })
     pause.addEventListener("click",function(){
-        if(!delay){
-            delay = setInterval(timer,10)
-            pause.innerText = "Pause"
-        }else{
-            stop()
-            pause.innerText = "Play"
+        if(flag){
+            if(!delay){
+                delay = setInterval(timer,10)
+                pause.innerText = "Pause"
+            }else{
+                stop()
+                pause.innerText = "Play"
+            }
         }
     })
     reset.addEventListener("click",function(){
         stop()
         time=0;
-        delay=null;
+        flag=false;
         document.querySelector("h1").innerText = `Timer: 0`
     })
 
