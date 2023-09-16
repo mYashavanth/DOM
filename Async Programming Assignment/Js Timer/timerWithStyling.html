@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        input{
+            width: 60%;
+            display: block;
+            margin-bottom: 5px;
+        }
+        #input{
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            width: 30%;
+            /* border: 1px solid red; */
+            margin: auto;
+        }
+        #button{
+            display: flex;
+            justify-content: space-around;
+            width: 20%;
+            /* border: 1px solid red; */
+            margin: auto;
+        }
+        #start{
+            border: 0px;
+            border-radius: 7px;
+            background-color: green;
+            color: white;
+            letter-spacing: 1.5px;
+        }
+        #pause{
+            border: 0px;
+            border-radius: 7px;
+            background-color: red;
+            color: blue;
+            letter-spacing: 1.5px;
+        }
+        #reset{
+            border: 0px;
+            border-radius: 7px;
+            background-color: gray;
+            color: white;
+            letter-spacing: 1.5px;
+        }
+        h1{
+            text-align: center;
+        }
+        h2{
+            text-align: center;
+            font-size: 32px;
+            margin-top: 5px;
+            margin-bottom: -20px;
+        }
+    </style>
+</head>
+<body>
+    <div id="input">
+        <input id="hour" type="number" placeholder="Hour">
+        <input id="min" type="number" placeholder="Min">
+        <input id="sec" type="number" placeholder="Sec">
+    </div>
+    <h2>Timer: </h2>
+    <h1>0</h1>
+    <div id="button">
+        <button id="start">Start</button>
+        <button id="pause">Pause</button>
+        <button id="reset">Reset</button>
+    </div>
+
+</body>
+</html>
+<script>
+    let hour = document.querySelector("#hour")
+    let min = document.querySelector("#min")
+    let sec = document.querySelector("#sec")
+    let start = document.querySelector("#start")
+    let pause = document.querySelector("#pause")
+    let reset = document.querySelector("#reset")
+
+    let time=0;
+    let delay;
+    let flag;
+
+    function toMiliSec(hour,min,sec){
+        time=(hour*60*60*100)+(min*60*100)+(sec*100)
+        // console.log(time)
+    }
+
+    function normalTime(miliSec){
+        let ms = miliSec%100;
+
+        let a = Math.trunc(miliSec/100)
+        s = a%60
+
+        let b = Math.trunc(miliSec/100/60)
+        let mi = b%60
+        
+        let c = Math.trunc(miliSec/100/60/60)
+        let hr = c%60
+        // console.log(hr,mi,s,ms)
+        if(mi==0 && hr==0){
+            document.querySelector("h1").innerText = `${s}:${ms}`
+        }else if(mi>0 && hr==0){
+            document.querySelector("h1").innerText = `${mi}:${s}:${ms}`
+        }else if(hr>0){
+            document.querySelector("h1").innerText = `${hr}:${mi}:${s}:${ms}`
+        }
+    }
+
+    function timer(){
+        if(time>0){
+            time = time-1;
+            normalTime(time)
+            // console.log(time)
+        }
+    }
+
+    function stop(){
+        clearInterval(delay);
+        delay = null;
+    }
+
+    start.addEventListener("click",function(){
+        if(!delay && (hour.value>0 || min.value>0 || sec.value>0)){
+            toMiliSec(hour.value,min.value,sec.value);
+            delay = setInterval(timer,10)
+            pause.innerText = "Pause"
+            document.querySelector("#pause").style.backgroundColor = "red"
+            document.querySelector("#pause").style.color = "blue"
+            flag = true;
+        } else{
+            alert(`Enter the data in Hour, Min or Sec to start the timer`)
+        }
+    })
+    pause.addEventListener("click",function(){
+        if(flag){
+            if(!delay){
+                delay = setInterval(timer,10)
+                pause.innerText = "Pause"
+                document.querySelector("#pause").style.backgroundColor = "red"
+                document.querySelector("#pause").style.color = "blue"
+            }else{
+                stop()
+                pause.innerText = "Play"
+                document.querySelector("#pause").style.backgroundColor = "green"
+                document.querySelector("#pause").style.color = "white"
+            }
+        }
+    })
+    reset.addEventListener("click",function(){
+        stop()
+        time=0;
+        flag=false;
+        document.querySelector("h1").innerText = `0`
+    })
+
+</script>
