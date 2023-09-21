@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #cont{
+            display: flex;
+            width: 90%;
+            margin: auto;
+        }
+        form{
+            /* border: 1px solid red; */
+            width: 30%;
+            box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+        }
+        table{
+            /* border: 1px solid black; */
+            font-family: Arial, Helvetica, sans-serif;
+            border-collapse: collapse;
+            width: 40%;
+            margin: auto;
+            margin-top: 50px;
+            text-align: center;
+        }
+        table tr:nth-child(even) {
+            background-color: #8caacf;
+        }
+
+        table tr:hover {
+            background-color: #ddd;
+        }
+
+        table th {
+            border: 1px solid white;
+            padding-top: 12px;
+            padding-bottom: 12px;
+            text-align: left;
+            background-color: #0468aa;
+            color: white;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <div id="cont">
+        <form>
+            <label for="">User Name:</label><br>
+            <input id="name" type="text" placeholder="Enter Your Name"><br>
+            <label for="">Age:</label><br>
+            <input id="age" type="number" placeholder="Enter Your Age"><br>
+            <input type="submit">
+            <button>Show LocalStorage Data</button>
+        </form>
+        <table>
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Age</th>
+                </tr>
+            </thead>
+            <tbody>
+    
+            </tbody>
+        </table>
+    </div>
+</body>
+</html>
+<script src="index.js"></script>

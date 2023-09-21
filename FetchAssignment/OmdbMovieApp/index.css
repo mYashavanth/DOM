@@ -1,0 +1,30 @@
+.card{
+    /* border: 1px solid red; */
+    padding: 20px;
+    border-radius: 20px;
+    box-shadow: rgba(0, 0, 0, 0.12) 0px 1px 3px, rgba(0, 0, 0, 0.24) 0px 1px 2px;
+}
+.card>img{
+    border-radius: 15px;
+}
+#cont{
+    display: grid;
+    grid-template-columns: repeat(3,1fr);
+    gap: 30px;
+    width: 80%;
+    margin: auto;
+}
+#head{
+    width: 20%;
+    margin: auto;
+    display: flex;
+    justify-content: space-around;
+    margin-bottom: 50px;
+    margin-top: 50px;
+}
+#btn{
+    background-color: rgb(28, 198, 28);
+    color: white;
+    border: 1px solid rgb(28, 198, 28);
+    border-radius: 10px;
+}
