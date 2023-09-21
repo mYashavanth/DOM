@@ -1,29 +1,33 @@
-let uName = document.getElementById("name")
-let uAge = document.getElementById("age")
+document.querySelector("button").addEventListener("click",myFun);
+function myFun(){
+    fetch("https://reqres.in/api/users?page=2")
+        .then(function(res){
+            return res.json();
+        })
+        .then(function(res){
+            console.log(res.data);
+            display(res.data)
+        })
+        .catch(function(err){
+            console.log(err);
+        })
 
-document.querySelector("form").addEventListener("submit",mySubmit)
-function mySubmit(ele){
-    ele.preventDefault()
-    console.log(uName.value)
-    console.log(uAge.value)
-    if(uName.value && uAge.value){
-        localStorage.setItem("name",uName.value)
-        localStorage.setItem("age",uAge.value)
-        uName.value = null;
-        uAge.value = null;
-    }else{
-        alert(`Given Data is Incomplete`)
-        uName.value = null;
-        uAge.value = null;
-    }
+        function display(data){
+            data.forEach(function(ele){
+                let img = document.createElement("img")
+                img.src = ele.avatar;
+                
+                let name = document.createElement("h3");
+                name.innerText = `${ele.first_name} ${ele.last_name}`;
+    
+                let mail = document.createElement("p");
+                mail.innerText = ele.email;
+    
+                let div = document.createElement("div");
+                div.className = "card"
+                div.append(img,name,mail)
+    
+                document.querySelector("#cont").appendChild(div);
+            })
+        }
 }
-document.querySelector("button").addEventListener("click",function(){
-    let tr = document.createElement("tr")
-    let td1 = document.createElement("td")
-    let td2 = document.createElement("td")
-    td1.innerText = localStorage.getItem("name")
-    td2.innerText = localStorage.getItem("age")
-    tr.append(td1,td2)
-    document.querySelector("tbody").innerHTML = "";
-    document.querySelector("tbody").append(tr)
-})
