@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        input{
+            cursor: pointer;
+        }
+        label{
+            cursor: pointer;
+        }
+        #button{
+            text-align: center;
+            border-bottom: 2px solid gray;
+            margin-bottom: 20px;
+        }
+        .order{
+            box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+            /* border: 1px solid green; */
+            border-radius: 15px;
+            width: 35%;
+            height: 400px;
+            margin-top: 20px;
+            margin-bottom: 20px;
+            padding-left: 22px;
+            padding-right: 20px;
+
+        }
+        #head{
+            display: flex;
+            justify-content: space-around;
+
+            /* border: 1px solid red; */
+            box-shadow: rgba(0, 0, 0, 0.45) 0px 25px 20px -20px; 
+            height: 120px;
+            border-radius: 15px;
+
+            position: -webkit-sticky;
+            position: sticky;
+            top: 0;
+            background-color: #FBB901;
+        }
+        #head img{
+            width: 100px;
+        }
+        #body{
+            /* border: 1px solid red; */
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-evenly;
+        }
+        #body1{
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-evenly;
+            /* border: 1px solid blue; */
+            width: 59%;
+            height: 1350px;
+        }
+        #body2{
+            /* border: 1px solid blue; */
+            border-left: 2px solid gray;
+            width: 40%;
+            text-align: center;
+        }
+        #body2>div{
+            padding-top: 5px;
+            box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+            /* border: 1px solid blue; */
+            width: 80%;
+            text-align: end;
+            border-radius: 15px;
+            margin: auto;
+            margin-bottom: 20px;
+            padding-left: 22px;
+            padding-right: 20px;
+        }
+        #body2>div>img{
+            /* border: 1px solid blue; */
+            width: 100%;
+        }
+
+        #tail{
+            /* border: 1px solid red; */
+            background-color: #FBB901;
+            height: 70px;
+            border-top: 2px solid gray;
+            border-radius: 15px;
+            margin-top: 20px;
+            text-align: center;
+        }
+        #btn{
+            background-color: #13aa52;
+            border: 1px solid #13aa52;
+            border-radius: 4px;
+            box-shadow: rgba(0, 0, 0, .1) 0 2px 4px 0;
+            box-sizing: border-box;
+            color: #fff;
+            cursor: pointer;
+            font-family: "Akzidenz Grotesk BQ Medium", -apple-system, BlinkMacSystemFont, sans-serif;
+            font-size: 16px;
+            font-weight: 400;
+            outline: none;
+            outline: 0;
+            padding: 10px 25px;
+            text-align: center;
+            /* transform: translateY(0); */
+            transition: transform 150ms, box-shadow 150ms;
+            user-select: none;
+            -webkit-user-select: none;
+            touch-action: manipulation;
+        }
+
+        #btn:hover {
+            box-shadow: rgba(0, 0, 0, .15) 0 3px 9px 0;
+            transform: translateY(-2px);
+        }
+
+
+    </style>
+</head>
+<body>
+    <div id="head">
+        <div>
+            <h1>Welcome To My McDonald’s Franchise</h1>
+        </div>
+        <div>
+            <img src="https://hrpl-production-mds-assets.s3.ap-south-1.amazonaws.com/logo/McDeliveryLogo.png" alt="">
+        </div>
+    </div>
+    <div id="button">
+        <h3>Select The Food Item You Want and Then Place Uour Order Here: <span><button id="btn">Order Food</button></span></h3>
+        
+    </div>
+    <div id="body">
+        <div id="body1">
+            <div class="order">
+                <input type="checkbox" id="food1" name="food1" value="https://c38blhej2h.execute-api.ap-south-1.amazonaws.com/dev/png/228/1691108866556247.png">
+                <label for="food1"> 
+                    <img src="https://c38blhej2h.execute-api.ap-south-1.amazonaws.com/dev/png/228/1691108866556247.png" alt="">
+                    <h2>2 McChicken Burger + Fries (L) + 2 Coke</h2>
+                    <p>Get the best value in your meal for 2. Save big on your favourite sharing meal - 2 McChicken</p>
+                    <h2>₹379</h2>
+                </label>
+            </div>
+
+            <div class="order">
+                <input type="checkbox" id="food2" name="food2" value="https://c38blhej2h.execute-api.ap-south-1.amazonaws.com/dev/jpeg/228/1686655090645563.jpeg">
+                <label for="food2"> 
+                    <img src="https://c38blhej2h.execute-api.ap-south-1.amazonaws.com/dev/jpeg/228/1686655090645563.jpeg" alt="">
+                    <h2>Chicken Maharaja Mac</h2>
+                    <p>Enjoy the tallest burgers innovated by us. Created with chunky juicy grilled chicken patty paired along with fresh ingredients like jalapeﺃ١o, onion, slice of cheese, tomatoes & crunchy lettuce dressed with the classical Habanero sauce.</p>
+                    <h2>₹247</h2>
+                </label>
+            </div>
+
+            <div class="order">
+                <input type="checkbox" id="food3" name="food3" value="https://c38blhej2h.execute-api.ap-south-1.amazonaws.com/dev/png/228/BSCWRP-48-1-48.png">
+                <label for="food3"> 
+                    <img src="https://c38blhej2h.execute-api.ap-south-1.amazonaws.com/dev/png/228/BSCWRP-48-1-48.png" alt="">
+                    <h2>Big Spicy Chicken Wrap</h2>
+                    <p>Experience a Piri piri explosion with the all new Piri Piri Big Spicy Chicken wrap.Crispy, spicy chicken patty, topped with creamy sauce, piri piri seasoning, wrapped with lettuce, onions, tomatoes and cheese. A BIG piri piri indulgence</p>
+                    <h2>₹235</h2>
+                </label>
+            </div>
+            
+            <div class="order">
+                <input type="checkbox" id="food4" name="food4" value="https://c38blhej2h.execute-api.ap-south-1.amazonaws.com/dev/png/228/BSCWRP-48-1-48.png">
+                <label for="food4"> 
+                    <img src="https://c38blhej2h.execute-api.ap-south-1.amazonaws.com/dev/png/228/BSCWRP-48-1-48.png" alt="">
+                    <h2>Big Spicy Chicken Wrap</h2>
+                    <p>Experience a Piri piri explosion with the all new Piri Piri Big Spicy Chicken wrap.Crispy, spicy chicken patty, topped with creamy sauce, piri piri seasoning, wrapped with lettuce, onions, tomatoes and cheese. A BIG piri piri indulgence</p>
+                    <h2>₹235</h2>
+                </label>
+            </div>
+
+            <div class="order">
+                <input type="checkbox" id="food5" name="food5" value="https://c38blhej2h.execute-api.ap-south-1.amazonaws.com/dev/png/228/CCMNEW-3673-1-3673.png">
+                <label for="food5"> 
+                    <img src="https://c38blhej2h.execute-api.ap-south-1.amazonaws.com/dev/png/228/CCMNEW-3673-1-3673.png" alt="">
+                    <h2>Chocolate Chip Muffin</h2>
+                    <p>Soft, fluffy, and bursting with chocolate chips with muffin is loaded with chocolate!</p>
+                    <h2>₹139</h2>
+                </label>
+            </div>
+
+            <div class="order">
+                <input type="checkbox" id="food6" name="food6" value="https://c38blhej2h.execute-api.ap-south-1.amazonaws.com/dev/png/228/MCOKE-16-1-16.png">
+                <label for="food6"> 
+                    <img src="https://c38blhej2h.execute-api.ap-south-1.amazonaws.com/dev/png/228/MCOKE-16-1-16.png" alt="">
+                    <h2>Coke</h2>
+                    <p>The perfect companion to your burger, fries and everything nice.</p>
+                    <h2>₹94</h2>
+                </label>
+            </div>    
+        </div>
+        
+        <div id="body2">
+            <h3>You Will Be Receiving Your Order Here</h3>
+        </div>
+    </div>
+
+
+    <div id="tail">
+        <h4>By Yashavantha (yashavantha123@gmail.com)</h4>
+    </div>
+</body>
+</html>
+<script>
+
+    let input = document.querySelectorAll("input")
+    document.getElementById("btn").addEventListener("click",function(){
+        let arr = [];
+         for(let i=0; i<input.length; i++){
+            if(input[i].checked==true){
+                arr.push(input[i].value)
+            }
+        }
+        let myPromise = new Promise(function(resolve,reject){
+            
+            document.querySelector("#body2").innerHTML = ""
+            let h3 = document.createElement("h3");
+            h3.innerText = `Please Waite Your Order Being Prepared`
+            document.querySelector("#body2").append(h3)
+
+            setTimeout(() => {
+                if(arr.length>0){
+                    resolve(arr)
+                }else{
+                    reject("Select Your Prefered Food Item To Place Order")
+                }
+            }, Math.floor(Math.random()*3000)+1000);
+        })
+        myPromise
+            .then((res)=>{
+                console.log(res)
+                display(res)
+            })
+            .catch(function(res){
+                console.log(res)
+                let h3 = document.createElement("h3")
+                h3.innerText = res;
+                document.querySelector("#body2").innerHTML="";
+                document.querySelector("#body2").append(h3);
+            })
+    })
+    function display(res){
+        document.querySelector("#body2").innerHTML = ""
+        let h3 = document.createElement("h3");
+        h3.innerText = `Your Order Is Here Please Collect It`
+        document.querySelector("#body2").append(h3)
+
+        for(let i=0; i<res.length; i++){
+            let img = document.createElement("img");
+            img.src = res[i]
+
+            let orderId = Math.floor(Math.random()*999999)+10000
+            let p= document.createElement("p")
+            p.innerText=`Your Order Id is: XYZ${orderId}`
+
+
+            let div = document.createElement("div")
+            div.append(p,img)
+            document.querySelector("#body2").append(div)
+        }
+    }
+</script>
