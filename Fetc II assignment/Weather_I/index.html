@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./index.css">
+</head>
+<body>
+    <div id="headCont">
+        <div>
+            <input type="text" id="searchInput">
+            <button id="searchBtn">Search</button>
+        </div>
+        <div>
+            <button id="forcast">Next 5 Day Forcast</button>
+        </div>
+
+    </div>
+    <div id="bodyCont">
+        <div id="map" style="height: 420px;">
+            <iframe width="600" height="500" id="gmap_canvas" src="https://maps.google.com/maps?q=2880%20Broadway,chitradurga&t=&z=13&ie=UTF8&iwloc=&output=embed" frameborder="0" scrolling="no" marginheight="0" marginwidth="0"></iframe>
+            <style>.mapouter{position:relative;text-align:right;height:500px;width:600px;}</style>
+            <a href="https://www.embedgooglemap.net"></a>
+            <style>.gmap_canvas {overflow:hidden;background:none!important;height:500px;width:600px;}</style>
+        </div>
+    </div>
+    <div id="forcastCont">
+
+    </div>
+</body>
+</html>
+<script src="./index.js"></script>
