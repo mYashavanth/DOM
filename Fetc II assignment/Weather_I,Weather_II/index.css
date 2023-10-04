@@ -75,7 +75,9 @@ body{
     margin: auto;
     flex-direction: row;
     justify-content: space-around;
-    padding: 10px;
+    /* padding: 25px; */
+    padding-top: 30px;
+    padding-bottom: 30px;
     background-color: #242529;
     border-radius: 10px;
     border: 1px solid #242529;
