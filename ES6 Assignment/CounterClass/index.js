@@ -3,13 +3,13 @@ class countdown{
         this.startTime = 0;
         this.setTime;
     }
-    start=()=>{
+    start(){
         this.setTime = setInterval(()=>{
             this.startTime++;
             document.querySelector("h1").innerText = this.startTime;
         },1000)
     }
-    stop=()=>{
+    stop(){
         clearInterval(this.setTime)
         this.setTime = null;
     }
