@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>es 6</title>
+</head>
+<body>
+    <div id="root">
+
+    </div>
+</body>
+</html>
+<script>
+  let element = document.querySelector("#root")
+  class ArrayConstructor{
+  constructor(...args) {
+    this.a = args;
+    this.size = args.length;
+  }
+
+  push(element) {
+    this.a[this.size] = element;
+    this.size++;
+  }
+
+  pop() {
+    if (this.size == 0){
+        return undefined;
+    }else{
+        let poppedElement = this.a[this.size - 1];
+        delete this.a[--this.size];
+        return poppedElement;
+    }
+  }
+
+  top() {
+    console.log(this.a[this.size - 1]);
+    element.innerHTML += `${this.a[this.size - 1]} <br/>`
+  }
+
+  print() {
+    let result = '[';
+    for (let i = 0; i < this.size; i++) {
+      result += this.a[i];
+      if (i < this.size - 1) {
+        result += ',';
+      }
+    }
+    result += ']';
+    console.log(result);
+    element.innerHTML += `${result} <br/>`;
+  }
+
+  printReverse() {
+    let result = '[';
+    for (let i = this.size - 1; i >= 0; i--) {
+      result += this.a[i];
+      if (i > 0) {
+        result += ',';
+      }
+    }
+    result += ']';
+    console.log(result);
+    element.innerHTML += `${result} <br/>`;
+  }
+
+  length(){
+    console.log(this.size)
+    element.innerHTML += `${this.size} <br/>`
+  }
+}
+
+const customArray = new ArrayConstructor(1,4,3,5);
+customArray.push(8);
+customArray.print(); 
+customArray.pop();
+customArray.print(); 
+customArray.top(); 
+customArray.printReverse(); 
+customArray.length()
+
+</script>
