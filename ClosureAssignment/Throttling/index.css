@@ -1,0 +1,123 @@
+body{
+    background-color: lightgreen;
+}
+.head{
+    width: 30%;
+    margin: auto;
+    font-size: 28px;
+    text-align: center;
+    box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+    border-radius: 10px;
+    margin-bottom: 20px;
+    padding: 20px;
+}
+.head select{
+    width: 150px;
+    height: 30px;
+    letter-spacing: 1px;
+    font-size: 20px;
+    border: 2px solid gray;
+    border-radius: 10px;
+    background-color: rgb(142, 243, 243);
+    margin-top: 10px;
+}
+.head select:hover{
+    border: 2px solid green;
+    color: green;
+}
+.head input{
+    width: 150px;
+    height: 30px;
+    letter-spacing: 1px;
+    font-size: 20px;
+    border: 2px solid gray;
+    border-radius: 10px;
+    background-color: rgb(142, 243, 243);
+    margin-top: 10px;
+}
+.head input:hover{
+    border: 2px solid green;
+    color: green;
+}
+.head button{
+  background-color: green;
+  border: 1px solid green;
+  border-radius: 10px;
+  box-shadow: rgba(0, 0, 0, .1) 0 2px 4px 0;
+  box-sizing: border-box;
+  color: #fff;
+  cursor: pointer;
+  font-family: "Akzidenz Grotesk BQ Medium", -apple-system, BlinkMacSystemFont, sans-serif;
+  outline: none;
+  outline: 0;
+  text-align: center;
+  transform: translateY(0);
+  transition: transform 150ms, box-shadow 150ms;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  height: 30px;
+  font-size: 20px;
+  width: 100px;
+}
+
+.head button:hover {
+  box-shadow: rgba(0, 0, 0, .15) 0 3px 9px 0;
+  transform: translateY(-2px);
+}
+
+.nameCard img{
+    width: 70px;
+    height: 70px;
+    padding-right: 10px;
+    border-radius: 10px;
+}
+.nameCard{
+    display: flex;
+    justify-content: flex-start;
+    padding: 10px;
+    /* border: 1px solid; */
+    align-items: center;
+    border-radius: 10px;
+    height: 75px;
+    background-color: rgb(179, 227, 179);
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px, rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
+}
+#foodName{
+    width: 90%;
+    margin: auto;
+    display: grid;
+    grid-template-columns: repeat(6,1fr);
+    gap: 10px;
+    padding: 20px;
+    box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+    background-color: lightgreen;
+    border-radius: 10px;
+}
+
+.card img{
+    width: 300px;
+    height: 300px;
+    padding-right: 30px;
+    border-radius: 15px;
+}
+.card{
+    display: flex;
+    /* border: 1px solid; */
+    padding: 20px;
+    border-radius: 15px;
+    background-color: rgb(179, 227, 179);
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px, rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
+}
+
+#root{
+    width: 90%;
+    margin: auto;
+    display: grid;
+    grid-template-columns: repeat(2,1fr);
+    gap: 30px;
+    padding: 20px;
+    box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+    background-color: lightgreen;
+    border-radius: 15px;
+}

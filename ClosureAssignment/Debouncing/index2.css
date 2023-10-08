@@ -1,0 +1,65 @@
+body{
+    background-color: #494A4F;
+}
+.card {
+    text-align: center;
+    align-items: center;
+    border: 1px solid #3D3E41;
+    background-color: #242529;
+    color: wheat;
+    border-radius: 10px;
+    border: 1px solid #313236;
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
+
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+    width: 40%;
+    margin: auto;
+}
+.card img{
+    border-radius: 10px;
+}
+#back{
+    background-color: #0095ff;
+    border: 1px solid transparent;
+    border-radius: 3px;
+    box-shadow: rgba(255, 255, 255, .4) 0 1px 0 0 inset;
+    box-sizing: border-box;
+    color: #fff;
+    cursor: pointer;
+    display: inline-block;
+    font-family: -apple-system,system-ui,"Segoe UI","Liberation Sans",sans-serif;
+    font-size: 13px;
+    font-weight: 400;
+    line-height: 1.15385;
+    margin: 0;
+    outline: none;
+    padding: 8px .8em;
+    position: relative;
+    text-align: center;
+    text-decoration: none;
+    user-select: none;
+    -webkit-user-select: none;
+    touch-action: manipulation;
+    vertical-align: baseline;
+    white-space: nowrap;
+    border-radius: 10px;
+    width: 150px;
+    letter-spacing: 1px;
+    color: #242529;
+}
+
+#back:hover,
+    #back:focus {
+    background-color: #07c;
+}
+
+#back:focus {
+    box-shadow: 0 0 0 4px rgba(0, 149, 255, .15);
+}
+
+#back:active {
+    background-color: #0064bd;
+    box-shadow: none;
+}
