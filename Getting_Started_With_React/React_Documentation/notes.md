@@ -14,16 +14,13 @@ Q4) How does Babel convert html code in React into valid code?
 Q5) What is ReactDOM used for? Write an example?
 ==> ReactDOM is like a special tool in React that helps you put your React components onto a web page. Here's a simple example:
     Imagine you have a webpage with a <div> element that has a class of "root" where you want to display your React component.
-
-    Exapmle: 
-    const element = React.createElement("div", {
-        className: "root",
-        children: "Carpe Diem",
-      })
-
-    const reactRoot = ReactDOM.createRoot(rootElement)
-
-    reactRoot.render(element)
+Exapmle: 
+const element = React.createElement("div", {
+    className: "root",
+    children: "Carpe Diem",
+    })
+const reactRoot = ReactDOM.createRoot(rootElement)
+reactRoot.render(element)
 
 Q6) What are the packages that you need to import for react to work with?
 ==> 'react', 'react-dom' packages are the fundamental dependencies for building React applications. 
@@ -35,15 +32,15 @@ Q6) What are the packages that you need to import for react to work with?
 Q7) How do you add react to a web application?
 ==> Install Required Software: Make sure you have Node.js and npm (Node Package Manager) installed on your computer. You can download them for free from the internet.
 
-    Create a New React App: Use a tool called create-react-app to set up a new React project. It's like creating a folder with all the necessary files and settings for React. You give your project a name when you create it.
+Create a New React App: Use a tool called create-react-app to set up a new React project. It's like creating a folder with all the necessary files and settings for React. You give your project a name when you create it.
 
-    Open Your Project: Go into the project folder you just created using your computer's command prompt or terminal.
+Open Your Project: Go into the project folder you just created using your computer's command prompt or terminal.
 
-    Start the Development Server: Run a command that starts a special server for your React app. This server allows you to see your React app in a web browser.
+Start the Development Server: Run a command that starts a special server for your React app. This server allows you to see your React app in a web browser.
 
-    Write Your Website: Create or modify React components to build your website. Components are like building blocks for your webpage.
+Write Your Website: Create or modify React components to build your website. Components are like building blocks for your webpage.
 
-    Show Your Website: Use React's special tool called ReactDOM to show your components on your webpage. You typically do this in a file called index.js.
+Show Your Website: Use React's special tool called ReactDOM to show your components on your webpage. You typically do this in a file called index.js.
 
 Q8) What is React.createElement?
 ==> React.createElement is a fundamental function in React that is used to create and return a React element, which represents a piece of the user interface. It's commonly used when writing React components in JavaScript, particularly when you're not using JSX or when you need to create elements dynamically.
@@ -60,7 +57,7 @@ Ex: const element = React.createElement('h1', { className: 'greeting' }, 'Hello,
 
 Q10) What is the meaning of render and root?
 ==> Render:
-    Think of "render" as the action of showing something on a web page. In React, it means turning your React components into what people can see on the screen.
-    
-    Root:
-    "Root" is like a special spot on the web page where your React stuff will appear. It's the place where your React app starts. You usually give it a name, like "root," and tell React to put your app there.
+Think of "render" as the action of showing something on a web page. In React, it means turning your React components into what people can see on the screen.
+
+Root:
+"Root" is like a special spot on the web page where your React stuff will appear. It's the place where your React app starts. You usually give it  a name, like "root," and tell React to put your app there.
